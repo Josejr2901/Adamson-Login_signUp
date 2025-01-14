@@ -59,6 +59,10 @@ public class MainPage extends Buttons {
     private JPasswordField mainPasswordField;
     private JCheckBox checkBox, passwordVisibleCheckBox;
     private ImageIcon visible, notVisible, checkBoxIcon, checkedCbIcon;
+    private int failedAttempts = 0; //To keep track of how many times the user has attempted to log in with an incorrect password.
+    private long blockTime = 0; //Stores the time stamp of when the account was blocked after reaching the maximum number of failed attempts. used in conjuction with BLOCK_DURATION to determine if the user is currently locked out
+    private final int MAX_FAILED_ATTEMPTS = 3; //A constant that defines the maximum number of allowed failed login attempts before the account is locked
+    private final long BLOCK_DURATION = 60000; //Defining the lock duration in milliseconds *1 minute* [60 seconds * 1000 milliseconds = 1 minute]
     
     private User user;
 
@@ -86,11 +90,11 @@ public class MainPage extends Buttons {
          // Regular login UI setup
         frame = new JFrame();
         frame.setTitle("Login to ADAMSON AI");
-        ImageIcon image = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\javaux\\src\\JavaUX\\adamson-logo.png");
-        visible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\visible1.png");
-        notVisible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\notVisible1.png");
-        checkBoxIcon = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\checkBox.png");
-        checkedCbIcon = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\checkedCheckBox.png");
+        ImageIcon image = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\adamson-logo.png");
+        visible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\visible1.png");
+        notVisible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\notVisible1.png");
+        checkBoxIcon = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\checkBox.png");
+        checkedCbIcon = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\checkedCheckBox.png");
         frame.setIconImage(image.getImage());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
@@ -136,9 +140,9 @@ public class MainPage extends Buttons {
                 if(usernameIcn.isEmpty()) {
                     usernameIcon.setIcon(null);
                 } else if (usernameExists(usernameIcn)) {
-                    usernameIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\CorrectGold.png"));
+                    usernameIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\CorrectGold.png"));
                 } else if (!usernameExists(usernameIcn)) {
-                    usernameIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\IncorrectGold.png"));
+                    usernameIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\IncorrectGold.png"));
                 }
             }
 
@@ -153,9 +157,6 @@ public class MainPage extends Buttons {
             }
             
         });
-        
-//        String description = getDescription();
-//        usernameTxt.setToolTipText(description);
                 
         usernameIcon = new JLabel();
         usernameIcon.setBounds(364, 100, 20, 20);
@@ -358,10 +359,6 @@ public class MainPage extends Buttons {
             JOptionPane.showMessageDialog(frame, "Error loading user data: " + e.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
         }
     }
-
-//    private String getDescription() {
-//        return "Enter your Username!";
-//    }
     
     private class PasswordVisible implements ActionListener {
         @Override
@@ -373,45 +370,56 @@ public class MainPage extends Buttons {
             }
         }
     }
-
+    
     private class LogInAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             String username = usernameTxt.getText().trim();
             String password = String.valueOf(mainPasswordField.getPassword());
-
-            // Check if the username exists in the userData map
+            
+            if (isBlocked()) {
+                long timeleft = (blockTime + BLOCK_DURATION - System.currentTimeMillis()) / 1000;
+                JOptionPane.showMessageDialog(frame, "Account is locked. Please try again in " + timeleft + " seconds");
+                return;
+            }
+            
+            //Check if username exists in the userData map
             User user = userData.get(username);
-
-            if (user == null) {
-                // Username does not exist
+            
+            if (user == null) { //Username does not exists
                 JOptionPane.showMessageDialog(frame, "Invalid Username.", "Error", JOptionPane.ERROR_MESSAGE);
-            } else if (!user.getPassword().equals(password)) {
-                // Username exists but password is incorrect
-                JOptionPane.showMessageDialog(frame, "Invalid Password.", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                // Login successful
-                if (checkBox.isSelected()) {
-                    // Encrypt and save session data
+            } else if (!user.getPassword().equals(password)) { //Username exists but password is incorrect
+                JOptionPane.showMessageDialog(frame, "Invalid Password. Attempts left: " + (MAX_FAILED_ATTEMPTS - failedAttempts - 1));
+                failedAttempts++; //Increments the failedAttempts value by 1
+                if (failedAttempts >= MAX_FAILED_ATTEMPTS) { //Check if the failedAttempts has reached its maximum permited 
+                    blockTime = System.currentTimeMillis(); //If failedAttempts do the following
+                    JOptionPane.showMessageDialog(frame, "Too many failed attempts. Account is locked for 1 minute");
+                }
+            } else { //Login successful
+                failedAttempts = 0; //sets finalAttempts back to 0
+                if (checkBox.isSelected()) { //Checks if the checkBox is selected
+                    //Encrypts and saves session data
                     String encryptedUsername = encryptData(username);
                     String encryptedPassword = encryptData(password);
-
-                    // Save encrypted data in session.txt
+                    
+                    //Save encrypted data in session.txt
                     try (BufferedWriter writer = new BufferedWriter(new FileWriter("session.txt"))) {
                         writer.write(encryptedUsername + "\n" + encryptedPassword);
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
                 }
-
-                // Proceed to LoggedInPage and pass the User object
-                //new LoggedInPage(user); // Pass the full User object here
-                new SecurityQuestionLogInPage(user); 
+                //Proceed to LoggInPage and passes the User object
+                new SecurityQuestionLogInPage(user);
                 frame.dispose();
             }
         }
     }
 
+    private boolean isBlocked() {
+        return failedAttempts >= MAX_FAILED_ATTEMPTS && System.currentTimeMillis() < blockTime + BLOCK_DURATION;
+    }
+    
     private User loadSessionData() {
         try {
             // Check if the session file exists

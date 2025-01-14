@@ -16,9 +16,13 @@ public class SecurityQuestionLogInPage {
     private JLabel titleLabel, securityQuestionLabel;
     private JTextField securityAnswerTxt;
     private JButton continueButton, cancelButton;
+    private int failedAttempts = 0; //To keep track of how many times the user has attempted to log in with an incorrect password.
+    private long blockTime = 0; //Stores the time stamp of when the account was blocked after reaching the maximum number of failed attempts. used in conjuction with BLOCK_DURATION to determine if the user is currently locked out
+    private final int MAX_FAILED_ATTEMPTS = 3; //A constant that defines the maximum number of allowed failed login attempts before the account is locked
+    private final long BLOCK_DURATION = 60000; //Defining the lock duration in milliseconds *1 minute* [60 seconds * 1000 milliseconds = 1 minute]
     
     private static final String SECRET_KEY = "mysecretkey12345";
-    
+        
     public SecurityQuestionLogInPage(User user) {
         
         String securityQuestion = user.getQuestion();
@@ -33,7 +37,7 @@ public class SecurityQuestionLogInPage {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false); 
         
-        ImageIcon image = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\javaux\\src\\JavaUX\\adamson-logo.png");
+        ImageIcon image = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\adamson-logo.png");
         frame.setIconImage(image.getImage());
         
         titleLabel = new JLabel("Please answer the security question");
@@ -61,15 +65,39 @@ public class SecurityQuestionLogInPage {
         continueButton.setBackground(Color.decode("#876F4D"));
         continueButton.setForeground(Color.WHITE); 
         continueButton.setBounds(50, 200, 280, 30); 
+        //continueButton.addActionListener(new NextAction());
         continueButton.addActionListener(e -> {
-            String checkAnswer = securityAnswerTxt.getText().trim();
+//            String checkAnswer = securityAnswerTxt.getText().trim();
+//            
+//            if (checkAnswer.equals(answer)) {
+//                frame.dispose();
+//                new LoggedInPage(user);
+//            } else {
+//                JOptionPane.showMessageDialog(frame, "Wrong answer, please try again!", "Error", JOptionPane.ERROR_MESSAGE);
+//            }
             
-            if (checkAnswer.equals(answer)) {
+            String securityAnswer = securityAnswerTxt.getText().trim();
+            
+            if (isBlocked()) {
+                long timeleft = (blockTime + BLOCK_DURATION - System.currentTimeMillis()) / 1000;
+                JOptionPane.showMessageDialog(frame, "Account is locked. Please try again in " + timeleft + " seconds");
+                return;
+            }
+            
+            if (!securityAnswer.equals(answer)) {
+                JOptionPane.showMessageDialog(frame, "Invalid Password. Attempts left: " + (MAX_FAILED_ATTEMPTS - failedAttempts - 1));
+                failedAttempts++;
+                if (failedAttempts >= MAX_FAILED_ATTEMPTS) {
+                    blockTime = System.currentTimeMillis();
+                    JOptionPane.showMessageDialog(frame, "Too many failed attempts. Account is locked for 1 minute");
+                } 
+            } else {
+                failedAttempts = 0;
+                
                 frame.dispose();
                 new LoggedInPage(user);
-            } else {
-                JOptionPane.showMessageDialog(frame, "Wrong answer, please try again!", "Error", JOptionPane.ERROR_MESSAGE);
             }
+            
         });
         
         cancelButton = new JButton("Cancel");
@@ -149,6 +177,38 @@ public class SecurityQuestionLogInPage {
         frame.add(cancelButton);
         frame.setVisible(true);
         
+    }
+    
+//    private class NextAction implements ActionListener {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            String securityAnswer = securityAnswerTxt.getText().trim();
+//            
+//            if (isBlocked()) {
+//                long timeleft = (blockTime + BLOCK_DURATION - System.currentTimeMillis()) / 1000;
+//                JOptionPane.showConfirmDialog(frame, "Account is locked. Please try again in " + timeleft + " seconds");
+//                return;
+//            }
+//            
+//            if (!securityAnswer.equals(answer)) {
+//                JOptionPane.showMessageDialog(frame, "Invalid Password. Attempts left: " + (MAX_FAILED_ATTEMPTS - failedAttempts));
+//                failedAttempts++;
+//                if (failedAttempts >= MAX_FAILED_ATTEMPTS) {
+//                    blockTime = System.currentTimeMillis();
+//                    JOptionPane.showMessageDialog(frame, "Too many failed attempts. Account is locked for 1 minute");
+//                } 
+//            } else {
+//                failedAttempts = 0;
+//                
+//                frame.dispose();
+//                new LoggedInPage(user);
+//            }
+//        }
+//        
+//    }
+    
+    private boolean isBlocked() {
+        return failedAttempts >= MAX_FAILED_ATTEMPTS && System.currentTimeMillis() < blockTime + BLOCK_DURATION;
     }
     
 }

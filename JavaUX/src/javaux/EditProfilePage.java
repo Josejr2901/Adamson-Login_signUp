@@ -77,7 +77,7 @@ public class EditProfilePage {
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        ImageIcon image = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\adamson-logo.png");
+        ImageIcon image = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\adamson-logo.png");
         frame.setIconImage(image.getImage());
               
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -446,9 +446,9 @@ public class EditProfilePage {
 
     private void genderIconMethod(String userGender, JLabel genderIcon) {
         if (userGender.equals("Male")) {
-            genderIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\IconMaleGold16px.png"));
+            genderIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\IconMaleGold16px.png"));
         } else if (userGender.equals("Female")) {
-            genderIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\IconFemaleGold16px.png"));
+            genderIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\IconFemaleGold16px.png"));
         }
     }
     
@@ -457,9 +457,9 @@ public class EditProfilePage {
         @Override
         public void actionPerformed(ActionEvent e) {
             if(maleButton.isSelected()) {
-                genderIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\IconMaleGold16px.png"));
+                genderIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\IconMaleGold16px.png"));
             } else if(femaleButton.isSelected()) {
-                genderIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\IconFemaleGold16px.png"));
+                genderIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\IconFemaleGold16px.png"));
             }
         }
         

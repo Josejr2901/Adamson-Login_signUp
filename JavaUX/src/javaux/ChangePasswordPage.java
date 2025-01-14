@@ -41,8 +41,8 @@ public class ChangePasswordPage {
         ImageIcon image = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\TableTask\\src\\tabletask\\adamson-logo.png");
         frame.setIconImage(image.getImage());
         
-        ImageIcon visible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\visible1.png");
-        ImageIcon notVisible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\notVisible1.png");
+        ImageIcon visible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\visible1.png");
+        ImageIcon notVisible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\notVisible1.png");
         
         resetPasswordLabel = new JLabel("Change Password of " + username);
         resetPasswordLabel.setForeground(Color.WHITE);
@@ -90,9 +90,9 @@ public class ChangePasswordPage {
                 if (answerIcn.isEmpty()) {
                     answerIcon.setIcon(null);
                 } else if (answerIcn.equalsIgnoreCase(answer)) {
-                    answerIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\CorrectGold.png"));
+                    answerIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\CorrectGold.png"));
                 } else if (!answerIcn.equalsIgnoreCase(answer)) {
-                    answerIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\IncorrectGold.png"));
+                    answerIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\IncorrectGold.png"));
                 }
             }
 
@@ -142,9 +142,9 @@ public class ChangePasswordPage {
                 if (emailIcn.isEmpty()) {
                     emailIcon.setIcon(null);
                 } else if (emailIcn.equalsIgnoreCase(email)) {
-                    emailIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\CorrectGold.png"));
+                    emailIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\CorrectGold.png"));
                 } else if (!emailIcn.equalsIgnoreCase(email)) {
-                    emailIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\IncorrectGold.png"));
+                    emailIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\IncorrectGold.png"));
                 }
             }
 

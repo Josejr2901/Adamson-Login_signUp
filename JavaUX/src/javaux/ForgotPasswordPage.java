@@ -27,7 +27,7 @@ public class ForgotPasswordPage {
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         
-        ImageIcon image = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\javaux\\src\\JavaUX\\adamson-logo.png");
+        ImageIcon image = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\src\\JavaUX\\adamson-logo.png");
         frame.setIconImage(image.getImage());
         
         forgotPasswordLabel = new JLabel("Enter Your Email");

@@ -46,11 +46,11 @@ public class ResetPasswordFromProfilePage {
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
 
-        image = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\adamson-logo.png");
+        image = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\adamson-logo.png");
         frame.setIconImage(image.getImage());
         
-        visible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\visible1.png");
-        notVisible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\notVisible1.png");
+        visible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\visible1.png");
+        notVisible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\notVisible1.png");
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         resetPasswordLabel = new JLabel("Reset Password of " + username);
         resetPasswordLabel.setForeground(Color.WHITE);
@@ -98,9 +98,9 @@ public class ResetPasswordFromProfilePage {
                 if (answerIcn.isEmpty()) {
                     answerIcon.setIcon(null);
                 } else if (answerIcn.equals(securityQuestionAnswer)) {
-                    answerIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\CorrectGold.png"));
+                    answerIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\CorrectGold.png"));
                 } else if (!answerIcn.equals(securityQuestionAnswer)) {
-                    answerIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\IncorrectGold.png"));
+                    answerIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\IncorrectGold.png"));
                 }
             }
 
@@ -149,9 +149,9 @@ public class ResetPasswordFromProfilePage {
                 if (emailIcn.isEmpty()) {
                     emailIcon.setIcon(null);
                 } else if (emailIcn.equals(email)) {
-                    emailIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\CorrectGold.png"));
+                    emailIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\CorrectGold.png"));
                 } else if (!emailIcn.equals(email)) {
-                    emailIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\IncorrectGold.png"));
+                    emailIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\IncorrectGold.png"));
                 }
             }
 

@@ -45,9 +45,9 @@ public class SignUp {
             this.mainPage = mainPage; // Initialize reference
             frame = new JFrame();
             frame.setTitle("Sign Up to ADAMSON AI");
-            ImageIcon image = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\TableTask\\src\\tabletask\\adamson-logo.png");
-            visible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\visible1.png"); 
-            notVisible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\notVisible1.png");
+            ImageIcon image = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\adamson-logo.png");
+            visible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\visible1.png"); 
+            notVisible = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\notVisible1.png");
             frame.setIconImage(image.getImage());
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setResizable(false);
@@ -95,9 +95,9 @@ public class SignUp {
                     if (usernameIcn.isEmpty()) {
                         usernameIcon.setIcon(null);
                     } else if(isUsernameTaken(usernameIcn) || !usernameIcn.matches("[a-zA-z0-9_]+")) {
-                        usernameIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\IncorrectGold.png"));
+                        usernameIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\IncorrectGold.png"));
                     } else if (!isUsernameTaken(usernameIcn) && usernameIcn.matches("[a-zA-z0-9_]+")) { 
-                        usernameIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\CorrectGold.png"));
+                        usernameIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\CorrectGold.png"));
                     }
                 } 
                 
@@ -150,9 +150,9 @@ public class SignUp {
                     if (emailIcn.isEmpty()) {
                         emailIcon.setIcon(null);
                     } else if (isEmailTaken(emailIcn) || !emailIcn.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.(com|ca|org|net|info)$")) {
-                        emailIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\IncorrectGold.png"));
+                        emailIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\IncorrectGold.png"));
                     } else if (!isEmailTaken(emailIcn) && emailIcn.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.(com|ca|org|net|info)$")) {
-                        emailIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\CorrectGold.png"));
+                        emailIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\CorrectGold.png"));
                     }
                 }
                 
@@ -243,9 +243,9 @@ public class SignUp {
                     if (securityAnswerIcn.isEmpty()) {
                         securityAnswerIcon.setIcon(null);
                     } else if (securityAnswerIcn.matches("[a-zA-Z0-9 ]+")) {
-                        securityAnswerIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\CorrectGold.png"));
+                        securityAnswerIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\CorrectGold.png"));
                     } else {
-                        securityAnswerIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\IncorrectGold.png"));
+                        securityAnswerIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\IncorrectGold.png"));
                     }
                 }
 
@@ -321,7 +321,7 @@ public class SignUp {
             
             genderIcon = new JLabel();
             genderIcon.setBounds(385, 340, 20, 20);
-            genderIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\IconGold16px.png"));
+            genderIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\IconGold16px.png"));
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     
             line1 = new JLabel("-----------------------------------------------------------------------------------------------");
             line1.setForeground(Color.decode("#8A6E4B")); 
@@ -339,7 +339,7 @@ public class SignUp {
             signUpButton.addActionListener(e -> saveUserData());
             //signUpButton.addActionListener(this);
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            icon = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\iconX1.png");
+            icon = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\iconX1.png");
             cancelButton = new JButton();
             cancelButton.setFocusable(false);
             cancelButton.setContentAreaFilled(false); // Disable default background behavior
@@ -544,9 +544,9 @@ public class SignUp {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == maleButton) {
-                genderIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\IconMaleGold16px.png"));
+                genderIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\IconMaleGold16px.png"));
             } else if (e.getSource() == femaleButton) {
-                genderIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\IconFemaleGold16px.png"));
+                genderIcon.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\IconFemaleGold16px.png"));
             }
         }
     }

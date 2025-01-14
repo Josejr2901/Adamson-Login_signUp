@@ -31,7 +31,7 @@ public class LoggedInPage {
        
         frame = new JFrame();      
         frame.setTitle("Welcome to ADAMSON AI");  // Set window title
-        ImageIcon image = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\adamson-logo.png");
+        ImageIcon image = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\adamson-logo.png");
         frame.setIconImage(image.getImage()); // Set window icon 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Exit application on close
         frame.setResizable(false); // Disable window resizing
@@ -54,19 +54,19 @@ public class LoggedInPage {
         usernameLabel.setBounds(0, 65, 800, 40); //x, y, width, height
         usernameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         
-        ImageIcon profileIcon1 = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\editUserWhite.png");
-        ImageIcon profileIcon2 = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\EditUserGold.png");
+        ImageIcon profileIcon1 = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\editUserWhite.png");
+        ImageIcon profileIcon2 = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\EditUserGold.png");
         
         profileButton = new JButton();
         profileButton.setFocusable(false);
         profileButton.setContentAreaFilled(false); // Disable default background behavior
         profileButton.setOpaque(true);  // Make sure the background is opaque to see the color
         profileButton.setFocusPainted(false);
-        profileButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         profileButton.setBackground(Color.decode("#876F4D"));
         profileButton.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
         profileButton.setIcon(profileIcon1);
         profileButton.setBounds(730, 20, 30, 30);
+        profileButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         profileButton.addActionListener((ActionEvent e) -> {
             frame.dispose();
             new ProfilePage(user); 
@@ -149,7 +149,7 @@ public class LoggedInPage {
         signoutButton.addMouseListener(listener);
 
         // Resize image proportionally
-        ImageIcon imageIcon2 = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\Adamson1.jpg");  
+        ImageIcon imageIcon2 = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\Adamson1.jpg");  
         int originalWidth = 2865;  //original size of the image
         int originalHeight = 1381; //original size of the image
         

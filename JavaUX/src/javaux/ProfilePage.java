@@ -38,14 +38,14 @@ public class ProfilePage {
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         
-        ImageIcon icon = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\adamson-logo.png");
+        ImageIcon icon = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\adamson-logo.png");
         frame.setIconImage(icon.getImage());
         
-//        ImageIcon profilePictureMale1 = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\profilePictureMaleWhite.png");
-//        ImageIcon profilePictureMale2 = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\profilePictureMaleGold.png");
+//        ImageIcon profilePictureMale1 = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\profilePictureMaleWhite.png");
+//        ImageIcon profilePictureMale2 = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\profilePictureMaleGold.png");
 //        
-//        ImageIcon profilePictureFemale1 = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\profilePictureFemaleWhite.png");
-//        ImageIcon profilePictureFemale2 = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\profilePictureFemaleGold.png");
+//        ImageIcon profilePictureFemale1 = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\profilePictureFemaleWhite.png");
+//        ImageIcon profilePictureFemale2 = new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\profilePictureFemaleGold.png");
         
         profilePictureButton = new JButton();
         profilePictureButton.setContentAreaFilled(false);
@@ -164,9 +164,9 @@ public class ProfilePage {
 
             private void GoldProfileIcon(String userGender, JButton profilePictureButton) {
                 if (userGender.equals("Male")) {
-                    profilePictureButton.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\profilePictureMaleGold.png"));
+                    profilePictureButton.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\profilePictureMaleGold.png"));
                 } else if (userGender.equals("Female")) {
-                    profilePictureButton.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\profilePictureFemaleGold.png"));
+                    profilePictureButton.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\profilePictureFemaleGold.png"));
                 } else {
                     profilePictureButton.setIcon(null);
                 }
@@ -187,9 +187,9 @@ public class ProfilePage {
 
     private void WhiteProfileIcon(String userGender, JButton profilePictureButton) {
         if (userGender.equals("Male")) {
-            profilePictureButton.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\profilePictureMaleWhite.png"));
+            profilePictureButton.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\profilePictureMaleWhite.png"));
         } else if (userGender.equals("Female")) {
-            profilePictureButton.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\javaux\\profilePictureFemaleWhite.png"));
+            profilePictureButton.setIcon(new ImageIcon("C:\\Users\\Jose.m\\Documents\\NetBeansProjects\\JavaUX\\src\\profilePictureFemaleWhite.png"));
         } else {
             profilePictureButton.setIcon(null);
         }
